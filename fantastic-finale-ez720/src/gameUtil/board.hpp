@@ -69,7 +69,7 @@ public:
     
     /*
      Returns a vector of valid indices the player can move
-     */
+     */ 
     vector<int> GetValidMoves(Player player);
 };
 
