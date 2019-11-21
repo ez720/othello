@@ -8,6 +8,12 @@
 #include "board.hpp"
 #include <iostream>
 
+Board::Board(int board_length) {
+    kBoardLength = board_length;
+    kBoardSize = kBoardLength * kBoardLength;
+    directions = {kBoardLength, -kBoardLength, -1, 1, kBoardLength + 1, kBoardLength - 1, -kBoardLength + 1, -kBoardLength - 1};
+}
+
 void Board::SetInitialBoard() {
     board_state.clear();
     
@@ -100,9 +106,3 @@ vector<int> Board::GetValidMoves(Player player) {
     
     return valid_moves;
 }
-
-void Board::SetBoard(int index, char mark) {
-    board_state[index] = mark;
-}
-
-

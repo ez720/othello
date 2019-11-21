@@ -17,10 +17,10 @@ using std::string;
 
 class Board {
 private:
-    const int kBoardLength = 8;
-    const int kBoardSize = kBoardLength * kBoardLength;
+    int kBoardLength;
+    int kBoardSize;
+    vector<int> directions;
 
-    
     const char kEmpty = '.';
     const char kBlack = 'X';
     const char kWhite = 'O';
@@ -28,8 +28,7 @@ private:
     vector<char> board_state;
     
 public:
-    //make private
-        const vector<int> directions = {kBoardLength, -kBoardLength, -1, 1, kBoardLength + 1, kBoardLength - 1, -kBoardLength + 1, -kBoardLength - 1};
+    Board(int board_length);
     void SetInitialBoard();
     void PrintBoard();
     int GetFlankIndex(int start_index, Player player, int direction);
@@ -37,8 +36,6 @@ public:
     bool IsValidMove(int start_index, Player player);
     void MakeMove(int start_index, Player player);
     vector<int> GetValidMoves(Player player);
-    
-    void SetBoard(int index, char mark);
 };
 
 #endif /* board_hpp */

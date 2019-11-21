@@ -8,19 +8,24 @@
 #include "gameEngine.hpp"
 #include <iostream>
 
+void GameEngine::SetupNewGame() {
+    Board board = Board(8);
+    board.SetInitialBoard();
+    board.PrintBoard();
+}
+
 void GameEngine::Run() {
-    Board board;
+    Board board = Board(8);
     board.SetInitialBoard();
     board.PrintBoard();
     
-    Player p = Player('O');
-
-    
+    Player p = Player('X');
     vector<int> moves = board.GetValidMoves(p);
     
-    for (int move : moves) {
-        board.MakeMove(move, p);
+    while (moves.size() != 0) {
+        board.MakeMove(moves[1], p);
         board.PrintBoard();
-        board.SetInitialBoard();
+        p = p.GetOpponent();
+        moves = board.GetValidMoves(p);
     }
 }
