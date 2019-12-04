@@ -11,20 +11,20 @@
 void GameEngine::SetupNewGame() {
     Board board = Board(8);
     board.SetInitialBoard();
-    board.PrintBoard();
+    //board.PrintBoard();
 }
 
-void GameEngine::Run() {
-    Board board = Board(8);
+void GameEngine::Run(int board_length) {
+    Board board = Board(board_length);
     board.SetInitialBoard();
-    board.PrintBoard();
+    board.PrintBoard(std::cout);
     
     Player p = Player('X');
     vector<int> moves = board.GetValidMoves(p);
     
     while (moves.size() != 0) {
-        board.MakeMove(moves[1], p);
-        board.PrintBoard();
+        board.MakeMove(moves[0], p);
+        board.PrintBoard(std::cout);
         p = p.GetOpponent();
         moves = board.GetValidMoves(p);
     }

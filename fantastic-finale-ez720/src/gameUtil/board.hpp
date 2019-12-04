@@ -24,6 +24,7 @@ private:
     const char kEmpty = '.';
     const char kBlack = 'X';
     const char kWhite = 'O';
+    const char kBound = '-';
     
     vector<char> board_state;
     
@@ -44,7 +45,7 @@ public:
      Pretty printing for the board
      Black is "X", White is "O", Empty is "."
      */
-    void PrintBoard();
+    void PrintBoard(std::ostream& out);
     
     /*
      Returns an index of a tile where the player flanks all opponent tiles in the direction
@@ -69,7 +70,7 @@ public:
     
     /*
      Returns a vector of valid indices the player can move
-     */ 
+     */
     vector<int> GetValidMoves(Player player);
 };
 

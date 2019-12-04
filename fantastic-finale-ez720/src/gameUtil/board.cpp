@@ -9,7 +9,7 @@
 #include <iostream>
 
 Board::Board(int board_length) {
-    kBoardLength = board_length;
+    kBoardLength = board_length + 2;
     kBoardSize = kBoardLength * kBoardLength;
     directions = {kBoardLength, -kBoardLength, -1, 1, kBoardLength + 1, kBoardLength - 1, -kBoardLength + 1, -kBoardLength - 1};
 }
@@ -18,7 +18,13 @@ void Board::SetInitialBoard() {
     board_state.clear();
     
     for (int i = 0; i < kBoardSize; i++) {
-        board_state.push_back(kEmpty);
+        board_state.push_back(kBound);
+    }
+    
+    //setting boundaries
+    for (int i = kBoardLength + 1; i < kBoardSize - kBoardLength; i++) {
+        if ((1 <= (i % kBoardLength)) && ((i % kBoardLength) <= kBoardLength - 2))
+            board_state[i] = kEmpty;
     }
     
     int top_left = kBoardSize / 2 - kBoardLength / 2 - 1;
@@ -32,22 +38,22 @@ void Board::SetInitialBoard() {
     board_state[bottom_right] = kWhite;
 }
 
-void Board::PrintBoard() {
+void Board::PrintBoard(std::ostream& out) {
     for (int i = 0; i < kBoardSize; i++) {
         if (i % kBoardLength == 0)
-            std::cout << std::endl;
+            out << std::endl;
         
-        std::cout << " " << board_state[i];
+        out << " " << board_state[i];
     }
     
-    std::cout << std::endl;
+    out << std::endl;
 }
 
 int Board::GetFlankIndex(int start_index, Player player, int direction) {
     int next_tile = start_index + direction;
     
     //if next tile has player's mark or is out of bounds
-    if (board_state[next_tile] == player.GetMark() || !(next_tile >= 0 && next_tile < kBoardSize))
+    if (board_state[next_tile] == player.GetMark() || board_state[next_tile] == kBound)
         return -1;
     
     //while tiles in the direction are opponent tiles
@@ -99,7 +105,7 @@ void Board::MakeMove(int start_index, Player player) {
 vector<int> Board::GetValidMoves(Player player) {
     vector<int> valid_moves;
     
-    for (int i = 0; i < kBoardSize; i++) {
+    for (int i = kBoardLength + 1; i < kBoardSize - kBoardLength; i++) {
         if (IsValidMove(i, player))
             valid_moves.push_back(i);
     }

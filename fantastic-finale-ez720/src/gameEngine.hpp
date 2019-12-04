@@ -14,7 +14,7 @@
 class GameEngine {
 public:
     static void SetupNewGame();
-    void Run();
+    void Run(int board_length);
 };
 
 #endif /* gameEngine_hpp */
