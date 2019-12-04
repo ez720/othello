@@ -17,12 +17,14 @@
 		F37EAE3C238487FC00F691AE /* circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37EAE3A238487FC00F691AE /* circle.cpp */; };
 		F37EAE3F23848D2000F691AE /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37EAE3D23848D2000F691AE /* board.cpp */; };
 		F3BF8F1523888F1D00B40EF0 /* tests-main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3A984DB23888D30000089F9 /* tests-main.cpp */; };
-		F3BF8F1623888F2000B40EF0 /* board-tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3A984DE23888DF0000089F9 /* board-tests.cpp */; };
 		F3DC6DDA2388916F005DEC2D /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37EAE3D23848D2000F691AE /* board.cpp */; };
 		F3DC6DDB2388917E005DEC2D /* gameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F32754552385EE8400E47F2B /* gameState.cpp */; };
 		F3DC6DDC23889181005DEC2D /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F32754582385F2BC00E47F2B /* player.cpp */; };
 		F3DC6DDD23889186005DEC2D /* gameEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3EAC6952384E57800BAE8B8 /* gameEngine.cpp */; };
+		F3E88A1923986E350002A0D8 /* minimaxStrategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3D92E8D23978E0C008ED108 /* minimaxStrategy.cpp */; };
+		F3E88A1A23986E350002A0D8 /* minimaxStrategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3D92E8D23978E0C008ED108 /* minimaxStrategy.cpp */; };
 		F3EAC6972384E57800BAE8B8 /* gameEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3EAC6952384E57800BAE8B8 /* gameEngine.cpp */; };
+		F3FADD4A23985C86003245E8 /* board-tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3A984DD23888DC4000089F9 /* board-tests.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -259,12 +261,14 @@
 		F37EAE3B238487FC00F691AE /* circle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = circle.hpp; sourceTree = "<group>"; };
 		F37EAE3D23848D2000F691AE /* board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = board.cpp; sourceTree = "<group>"; };
 		F37EAE3E23848D2000F691AE /* board.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = board.hpp; sourceTree = "<group>"; };
-		F3A984DB23888D30000089F9 /* tests-main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "tests-main.cpp"; sourceTree = "<group>"; };
-		F3A984DD23888DC4000089F9 /* catch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = catch.hpp; path = "../../../lavish-linked-lists-ez720/liblinkedlist/test/catch.hpp"; sourceTree = "<group>"; };
-		F3A984DE23888DF0000089F9 /* board-tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "board-tests.cpp"; sourceTree = "<group>"; };
+		F3A984DB23888D30000089F9 /* tests-main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "tests-main.cpp"; path = "tests/tests-main.cpp"; sourceTree = "<group>"; };
+		F3A984DD23888DC4000089F9 /* board-tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "board-tests.cpp"; path = "tests/board-tests.cpp"; sourceTree = "<group>"; };
 		F3BF8F1323888EE800B40EF0 /* fantastic-finale-ez720-tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fantastic-finale-ez720-tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3D92E8D23978E0C008ED108 /* minimaxStrategy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = minimaxStrategy.cpp; sourceTree = "<group>"; };
+		F3D92E8E23978E0C008ED108 /* minimaxStrategy.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = minimaxStrategy.hpp; sourceTree = "<group>"; };
 		F3EAC6952384E57800BAE8B8 /* gameEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gameEngine.cpp; sourceTree = "<group>"; };
 		F3EAC6962384E57800BAE8B8 /* gameEngine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = gameEngine.hpp; sourceTree = "<group>"; };
+		F3FAA55223985FFE006C5184 /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = catch.hpp; path = "../../lavish-linked-lists-ez720/liblinkedlist/test/catch.hpp"; sourceTree = "<group>"; };
 		F8CB2AF8F331EA3388025590 /* ofxDatGuiEvents.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxDatGuiEvents.h; path = "../../of_v0.10.1_osx_release/addons/ofxDatGui-master/src/core/ofxDatGuiEvents.h"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -667,6 +671,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				F3D92E8923978B99008ED108 /* strategies */,
 				F3D0647923863E6F0059A420 /* guiUtil */,
 				F3D0647823863E540059A420 /* gameUtil */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
@@ -694,12 +699,11 @@
 		F3A984C323888AF7000089F9 /* tests */ = {
 			isa = PBXGroup;
 			children = (
-				F3A984DD23888DC4000089F9 /* catch.hpp */,
+				F3FAA55223985FFE006C5184 /* catch.hpp */,
+				F3A984DD23888DC4000089F9 /* board-tests.cpp */,
 				F3A984DB23888D30000089F9 /* tests-main.cpp */,
-				F3A984DE23888DF0000089F9 /* board-tests.cpp */,
 			);
 			name = tests;
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		F3D0647823863E540059A420 /* gameUtil */ = {
@@ -722,6 +726,15 @@
 				F37EAE3B238487FC00F691AE /* circle.hpp */,
 			);
 			path = guiUtil;
+			sourceTree = "<group>";
+		};
+		F3D92E8923978B99008ED108 /* strategies */ = {
+			isa = PBXGroup;
+			children = (
+				F3D92E8D23978E0C008ED108 /* minimaxStrategy.cpp */,
+				F3D92E8E23978E0C008ED108 /* minimaxStrategy.hpp */,
+			);
+			path = strategies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -848,7 +861,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "xcodebuild -project \"$OF_PATH/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj\" -target openFrameworks -configuration \"${CONFIGURATION}\"";
+			shellScript = "xcodebuild -project \"$OF_PATH/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj\" -target openFrameworks -configuration \"${CONFIGURATION}\"\n";
 		};
 		F3BF8F0C23888EE800B40EF0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -886,6 +899,7 @@
 				F32754572385EE8400E47F2B /* gameState.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				F3E88A1923986E350002A0D8 /* minimaxStrategy.cpp in Sources */,
 				AA0C9EA4C21A81B8971CCD11 /* ofxDatGuiComponent.cpp in Sources */,
 				F37EAE3C238487FC00F691AE /* circle.cpp in Sources */,
 				F37EAE3F23848D2000F691AE /* board.cpp in Sources */,
@@ -900,10 +914,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3E88A1A23986E350002A0D8 /* minimaxStrategy.cpp in Sources */,
 				F3BF8F1523888F1D00B40EF0 /* tests-main.cpp in Sources */,
 				F3DC6DDC23889181005DEC2D /* player.cpp in Sources */,
 				F3DC6DDB2388917E005DEC2D /* gameState.cpp in Sources */,
-				F3BF8F1623888F2000B40EF0 /* board-tests.cpp in Sources */,
+				F3FADD4A23985C86003245E8 /* board-tests.cpp in Sources */,
 				F3DC6DDA2388916F005DEC2D /* board.cpp in Sources */,
 				F3DC6DDD23889186005DEC2D /* gameEngine.cpp in Sources */,
 			);

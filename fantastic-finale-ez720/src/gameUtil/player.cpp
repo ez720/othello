@@ -10,13 +10,25 @@
 
 Player::Player(char player_mark) {
     mark = player_mark;
-    opponent = (player_mark == 'X') ? 'O' : 'X';
+    opponent_mark = (player_mark == 'X') ? 'O' : 'X';
 }
 
 char Player::GetMark() {
     return mark;
 }
 
-char Player::GetOpponent() {
-    return opponent;
+Player Player::GetOpponent() {
+    return Player(GetOpponentMark());
+}
+
+char Player::GetOpponentMark() {
+    return opponent_mark;
+}
+
+bool Player::IsMax() {
+    return (mark == 'X');
+}
+
+bool Player::DoesNotExist() {
+    return (mark == '?');
 }

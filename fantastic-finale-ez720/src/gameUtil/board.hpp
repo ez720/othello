@@ -20,15 +20,14 @@ private:
     int kBoardLength;
     int kBoardSize;
     vector<int> directions;
-
+    vector<char> board_state;
+    
+public:
     const char kEmpty = '.';
     const char kBlack = 'X';
     const char kWhite = 'O';
     const char kBound = '-';
     
-    vector<char> board_state;
-    
-public:
     /*
      Constructor for board
      Creates a board_length * board_length vector to represent a board
@@ -72,6 +71,10 @@ public:
      Returns a vector of valid indices the player can move
      */
     vector<int> GetValidMoves(Player player);
+    
+    int Score(Player player);
+    
+    Player NextPlayer(Player player);
 };
 
 #endif /* board_hpp */

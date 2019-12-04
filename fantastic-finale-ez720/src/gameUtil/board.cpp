@@ -57,7 +57,7 @@ int Board::GetFlankIndex(int start_index, Player player, int direction) {
         return -1;
     
     //while tiles in the direction are opponent tiles
-    while (board_state[next_tile] == player.GetOpponent()) {
+    while (board_state[next_tile] == player.GetOpponentMark()) {
         next_tile += direction;
     }
     
@@ -111,4 +111,23 @@ vector<int> Board::GetValidMoves(Player player) {
     }
     
     return valid_moves;
+}
+
+int Board::Score(Player player) {
+    int player_count = std::count(board_state.begin(), board_state.end(), player.GetMark());
+    int opponent_count = std::count(board_state.begin(), board_state.end(), player.GetOpponentMark());
+    
+    return player_count - opponent_count;
+}
+
+Player Board::NextPlayer(Player player) {
+    if (!GetValidMoves(player.GetOpponent()).empty()) {
+        return player.GetOpponent();
+    }
+    
+    else if(!GetValidMoves(player.GetOpponent()).empty()) {
+        return player;
+    }
+    
+    return Player('?');
 }

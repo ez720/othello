@@ -11,10 +11,16 @@
 #include <stdio.h>
 #include "board.hpp"
 
-class GameState {
+/*class GameState {
 private:
     Board board;
-    char current_player;
-};
+    Player current_player;
+    int move;
+    int score;
+    
+public:
+    GameState(Board b, Player player, int m, int s);
+    int GetMove();
+};*/
 
 #endif /* gameState_hpp */

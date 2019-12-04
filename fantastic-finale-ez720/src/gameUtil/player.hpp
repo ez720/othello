@@ -13,12 +13,16 @@
 class Player {
 private:
     char mark;
-    char opponent;
+    char opponent_mark;
 
 public:
+    Player() = default;
     Player(char player_mark);
     char GetMark();
-    char GetOpponent();
+    Player GetOpponent();
+    char GetOpponentMark();
+    bool IsMax();
+    bool DoesNotExist();
 };
 
 #endif /* player_hpp */

@@ -19,13 +19,28 @@ void GameEngine::Run(int board_length) {
     board.SetInitialBoard();
     board.PrintBoard(std::cout);
     
-    Player p = Player('X');
-    vector<int> moves = board.GetValidMoves(p);
+    Player black = Player('X');
+    Player white = Player('O');
+    Player player = black;
+    MinimaxStrategy minimax_black = MinimaxStrategy();
+    minimax_black.minimax_player = black;
     
-    while (moves.size() != 0) {
-        board.MakeMove(moves[0], p);
-        board.PrintBoard(std::cout);
-        p = p.GetOpponent();
-        moves = board.GetValidMoves(p);
+    MinimaxStrategy minimax_white = MinimaxStrategy();
+    minimax_white.minimax_player = white;
+    
+    while (!player.DoesNotExist()) {
+        if (player.GetMark() == 'X') {
+            int move = minimax_black.GetMove(player, board);
+            board.MakeMove(move, player);
+            board.PrintBoard(std::cout);
+        }
+        
+        else {
+            int move = minimax_white.GetMove(player, board);
+            board.MakeMove(move, player);
+            board.PrintBoard(std::cout);
+        }
+        
+        player = board.NextPlayer(player);
     }
 }

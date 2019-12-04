@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include "board.hpp"
+#include "minimaxStrategy.hpp"
 
 class GameEngine {
 public:
