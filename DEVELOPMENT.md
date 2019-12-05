@@ -12,3 +12,17 @@
 * Worked on board functionality
   * Created methods to return a list of valid moves and flip tiles
   * Created multiple helper methods (getting indexes of "flanking" tiles, checking valid moves, etc.)
+
+## Week 3
+
+### 12/2 - 12/3
+* Added boundaries for board
+ * Fixed bug where flipping tiles would "wrap around" the edges of the board
+* Created minimax strategy
+ * Strategy can determine best move according to player
+ * Attempted a C++ abstract class
+ 
+## Week 4
+
+### 12/5
+* 
