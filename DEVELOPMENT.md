@@ -17,10 +17,10 @@
 
 ### 12/2 - 12/3
 * Added boundaries for board
- * Fixed bug where flipping tiles would "wrap around" the edges of the board
+  * Fixed bug where flipping tiles would "wrap around" the edges of the board
 * Created minimax strategy
- * Strategy can determine best move according to player
- * Attempted a C++ abstract class
+  * Strategy can determine best move according to player
+  * Attempted a C++ abstract class
  
 ## Week 4
 
