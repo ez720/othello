@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "ofxDatGui.h"
-#include "circle.hpp"
 #include "board.hpp"
 #include "gameEngine.hpp"
 #include "player.hpp"
@@ -31,6 +30,9 @@ class ofApp : public ofBaseApp{
         bool reset;
     
         Board board;
+        Player black;
+        Player white;
+        Player current_player;
     
         ofxDatGuiDropdown* strategy_menu;
         void onDropdownEvent(ofxDatGuiDropdownEvent e);
@@ -38,5 +40,7 @@ class ofApp : public ofBaseApp{
         void onButtonEvent(ofxDatGuiButtonEvent e);
     
         vector<int> circles;
+        MinimaxStrategy minimax_white;
+        bool clicked;
 		
 };

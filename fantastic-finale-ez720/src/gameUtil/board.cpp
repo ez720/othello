@@ -92,6 +92,7 @@ bool Board::IsValidMove(int start_index, Player player) {
     
     bool has_flank;
     
+    //check if there is a valid move in any direction
     for (int direction : Board::directions) {
         if (GetFlankIndex(start_index, player, direction) != -1)
             return true;

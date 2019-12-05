@@ -22,28 +22,45 @@ void ofApp::setup(){
     board = Board(8);
     board.SetInitialBoard();
     
-    /*Player black = Player('X');
-    MinimaxStrategy minimax_black = MinimaxStrategy();
-    minimax_black.minimax_player = black;
-    Player player = black;
-    vector<int> moves = board.GetValidMoves(player);
+    black = Player('X');
+    white = Player('O');
+    current_player = black;
     
-    for (int m : moves) {
-        std::pair<int, int> center = PlottingUtil::IndexToCenter(m);
-        circles.push_back(Circle(center.first, center.second, 2));
-    }
-    
-    int move = minimax_black.GetMove(player, board);
-    board.MakeMove(move, player);
-    board.PrintBoard(std::cout);
-    
-    std::pair<int, int> center = PlottingUtil::IndexToCenter(move);
-    circles.push_back(Circle(center.first, center.second, 1));*/
+    minimax_white = MinimaxStrategy();
+    minimax_white.minimax_player = white;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     strategy_menu->update();
+    
+    if (current_player.GetMark() == 'X') {
+        if (clicked) {
+            clicked = false;
+            current_player = board.NextPlayer(current_player);
+            
+            for (int i = 0 ; i < circles.size(); i++) {
+                if (circles[i] == 2) {
+                    circles[i] = -1;
+                }
+            }
+        }
+        
+        else {
+            //display possible moves
+            vector<int> moves = board.GetValidMoves(current_player);
+            for (int move : moves) {
+                circles[move] = 2;
+            }
+        }
+    }
+
+    
+    if (current_player.GetMark() == 'O') {
+        int move = minimax_white.GetMove(current_player, board);
+        board.MakeMove(move, current_player);
+        current_player = board.NextPlayer(current_player);
+    }
     
     const vector<char> &board_vector = board.GetBoard();
     
@@ -68,6 +85,7 @@ void ofApp::draw(){
             circles[i] = -1;
         }
         board.SetInitialBoard();
+        current_player = black;
         update();
     }
     
@@ -125,8 +143,12 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     int index = PlottingUtil::ClickToIndex(x, y);
-    circles[index] = 1;
-    board.MakeMove(index, Player('X'));
+    
+    if (board.IsValidMove(index, black)) {
+        circles[index] = 1;
+        board.MakeMove(index, Player('X'));
+        clicked = true;
+    }
 }
 
 //--------------------------------------------------------------
@@ -169,7 +191,6 @@ void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e){
 }
 
 void ofApp::onButtonEvent(ofxDatGuiButtonEvent e){
-    //GameEngine::SetupNewGame();
     reset = true;
     
 }
