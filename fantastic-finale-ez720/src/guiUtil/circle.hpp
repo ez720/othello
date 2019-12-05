@@ -9,6 +9,7 @@
 #define circle_hpp
 
 #include <stdio.h>
+#include <iostream>
 
 class Circle {
     
@@ -17,7 +18,7 @@ public:
     int y;
     int color;
     
-    Circle(int x_center, int y_center, int c);
+    Circle(int mouse_x, int mouse_y, int c);
     
 };
 

@@ -14,7 +14,6 @@
 
 class GameEngine {
 public:
-    static void SetupNewGame();
     void Run(int board_length);
 };
 

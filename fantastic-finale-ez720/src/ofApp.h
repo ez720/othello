@@ -26,6 +26,9 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
         vector<Circle> circles;
+        bool player_black = true;
+        bool reset;
+    
         ofxDatGuiDropdown* strategy_menu;
         void onDropdownEvent(ofxDatGuiDropdownEvent e);
         ofxDatGuiButton* button;

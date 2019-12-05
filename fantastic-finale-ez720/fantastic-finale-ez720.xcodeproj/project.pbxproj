@@ -12,13 +12,11 @@
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 		ECD5019E80DDF4A340227A5D /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEA203049DDA07D5863248 /* ofxSmartFont.cpp */; };
-		F32754572385EE8400E47F2B /* gameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F32754552385EE8400E47F2B /* gameState.cpp */; };
 		F327545A2385F2BC00E47F2B /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F32754582385F2BC00E47F2B /* player.cpp */; };
 		F37EAE3C238487FC00F691AE /* circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37EAE3A238487FC00F691AE /* circle.cpp */; };
 		F37EAE3F23848D2000F691AE /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37EAE3D23848D2000F691AE /* board.cpp */; };
 		F3BF8F1523888F1D00B40EF0 /* tests-main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3A984DB23888D30000089F9 /* tests-main.cpp */; };
 		F3DC6DDA2388916F005DEC2D /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37EAE3D23848D2000F691AE /* board.cpp */; };
-		F3DC6DDB2388917E005DEC2D /* gameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F32754552385EE8400E47F2B /* gameState.cpp */; };
 		F3DC6DDC23889181005DEC2D /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F32754582385F2BC00E47F2B /* player.cpp */; };
 		F3DC6DDD23889186005DEC2D /* gameEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3EAC6952384E57800BAE8B8 /* gameEngine.cpp */; };
 		F3E88A1923986E350002A0D8 /* minimaxStrategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3D92E8D23978E0C008ED108 /* minimaxStrategy.cpp */; };
@@ -253,8 +251,6 @@
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		E96ABD11839137696F76A779 /* ofxDatGui.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxDatGui.cpp; path = "../../of_v0.10.1_osx_release/addons/ofxDatGui-master/src/ofxDatGui.cpp"; sourceTree = SOURCE_ROOT; };
 		EDC285CE03B6AAFC6749D9D9 /* ofxDatGuiIntObject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxDatGuiIntObject.h; path = "../../of_v0.10.1_osx_release/addons/ofxDatGui-master/src/core/ofxDatGuiIntObject.h"; sourceTree = SOURCE_ROOT; };
-		F32754552385EE8400E47F2B /* gameState.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gameState.cpp; sourceTree = "<group>"; };
-		F32754562385EE8400E47F2B /* gameState.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = gameState.hpp; sourceTree = "<group>"; };
 		F32754582385F2BC00E47F2B /* player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
 		F32754592385F2BC00E47F2B /* player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
 		F37EAE3A238487FC00F691AE /* circle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = circle.cpp; sourceTree = "<group>"; };
@@ -711,8 +707,6 @@
 			children = (
 				F37EAE3D23848D2000F691AE /* board.cpp */,
 				F37EAE3E23848D2000F691AE /* board.hpp */,
-				F32754552385EE8400E47F2B /* gameState.cpp */,
-				F32754562385EE8400E47F2B /* gameState.hpp */,
 				F32754582385F2BC00E47F2B /* player.cpp */,
 				F32754592385F2BC00E47F2B /* player.hpp */,
 			);
@@ -896,7 +890,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F32754572385EE8400E47F2B /* gameState.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				F3E88A1923986E350002A0D8 /* minimaxStrategy.cpp in Sources */,
@@ -917,7 +910,6 @@
 				F3E88A1A23986E350002A0D8 /* minimaxStrategy.cpp in Sources */,
 				F3BF8F1523888F1D00B40EF0 /* tests-main.cpp in Sources */,
 				F3DC6DDC23889181005DEC2D /* player.cpp in Sources */,
-				F3DC6DDB2388917E005DEC2D /* gameState.cpp in Sources */,
 				F3FADD4A23985C86003245E8 /* board-tests.cpp in Sources */,
 				F3DC6DDA2388916F005DEC2D /* board.cpp in Sources */,
 				F3DC6DDD23889186005DEC2D /* gameEngine.cpp in Sources */,

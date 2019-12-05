@@ -23,8 +23,23 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    if (reset) {
+        reset = false;
+        circles.clear();
+        
+        circles.push_back(Circle(550, 550, 35));
+        circles.push_back(Circle(450, 450, 35));
+    }
+    
     for (Circle c : circles) {
-        ofDrawCircle(c.x, c.y, 20);
+        ofSetColor(200, 100, 0);
+        ofDrawCircle(c.x, c.y, 35);
+        ofSetColor(255, 255, 255);
+    }
+    
+    for (int i = 0; i < 1000; i+=100) {
+        ofDrawLine(0, i, 1000, i);
+        ofDrawLine(i, 0, i, 1000);
     }
     
     strategy_menu->draw();
@@ -96,5 +111,7 @@ void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e){
 }
 
 void ofApp::onButtonEvent(ofxDatGuiButtonEvent e){
-    GameEngine::SetupNewGame();
+    //GameEngine::SetupNewGame();
+    reset = true;
+    
 }
