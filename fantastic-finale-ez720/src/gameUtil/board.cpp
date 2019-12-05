@@ -8,10 +8,16 @@
 #include "board.hpp"
 #include <iostream>
 
+Board::Board() {}
+
 Board::Board(int board_length) {
     kBoardLength = board_length + 2;
     kBoardSize = kBoardLength * kBoardLength;
     directions = {kBoardLength, -kBoardLength, -1, 1, kBoardLength + 1, kBoardLength - 1, -kBoardLength + 1, -kBoardLength - 1};
+}
+
+const vector<char>& Board::GetBoard() const {
+    return board_state;
 }
 
 void Board::SetInitialBoard() {

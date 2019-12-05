@@ -22,17 +22,20 @@ private:
     vector<int> directions;
     vector<char> board_state;
     
-public:
-    const char kEmpty = '.';
-    const char kBlack = 'X';
-    const char kWhite = 'O';
-    const char kBound = '-';
+    char kEmpty = '.';
+    char kBlack = 'X';
+    char kWhite = 'O';
+    char kBound = '-';
     
+public:
+    Board();
     /*
      Constructor for board
      Creates a board_length * board_length vector to represent a board
      */
     Board(int board_length);
+    
+    const vector<char>& GetBoard() const;
     
     /*
      Sets the current board to the starting board for Othello

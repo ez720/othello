@@ -5,6 +5,8 @@
 #include "circle.hpp"
 #include "board.hpp"
 #include "gameEngine.hpp"
+#include "player.hpp"
+#include "plottingUtil.hpp"
 
 class ofApp : public ofBaseApp{
 
@@ -25,13 +27,16 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        vector<Circle> circles;
         bool player_black = true;
         bool reset;
+    
+        Board board;
     
         ofxDatGuiDropdown* strategy_menu;
         void onDropdownEvent(ofxDatGuiDropdownEvent e);
         ofxDatGuiButton* button;
         void onButtonEvent(ofxDatGuiButtonEvent e);
+    
+        vector<int> circles;
 		
 };

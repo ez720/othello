@@ -13,6 +13,7 @@
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 		ECD5019E80DDF4A340227A5D /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEA203049DDA07D5863248 /* ofxSmartFont.cpp */; };
 		F327545A2385F2BC00E47F2B /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F32754582385F2BC00E47F2B /* player.cpp */; };
+		F34BE3D12398CB9300A7750F /* plottingUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F34BE3CF2398CB9300A7750F /* plottingUtil.cpp */; };
 		F37EAE3C238487FC00F691AE /* circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37EAE3A238487FC00F691AE /* circle.cpp */; };
 		F37EAE3F23848D2000F691AE /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37EAE3D23848D2000F691AE /* board.cpp */; };
 		F3BF8F1523888F1D00B40EF0 /* tests-main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3A984DB23888D30000089F9 /* tests-main.cpp */; };
@@ -253,6 +254,8 @@
 		EDC285CE03B6AAFC6749D9D9 /* ofxDatGuiIntObject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxDatGuiIntObject.h; path = "../../of_v0.10.1_osx_release/addons/ofxDatGui-master/src/core/ofxDatGuiIntObject.h"; sourceTree = SOURCE_ROOT; };
 		F32754582385F2BC00E47F2B /* player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
 		F32754592385F2BC00E47F2B /* player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
+		F34BE3CF2398CB9300A7750F /* plottingUtil.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = plottingUtil.cpp; sourceTree = "<group>"; };
+		F34BE3D02398CB9300A7750F /* plottingUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = plottingUtil.hpp; sourceTree = "<group>"; };
 		F37EAE3A238487FC00F691AE /* circle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = circle.cpp; sourceTree = "<group>"; };
 		F37EAE3B238487FC00F691AE /* circle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = circle.hpp; sourceTree = "<group>"; };
 		F37EAE3D23848D2000F691AE /* board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = board.cpp; sourceTree = "<group>"; };
@@ -718,6 +721,8 @@
 			children = (
 				F37EAE3A238487FC00F691AE /* circle.cpp */,
 				F37EAE3B238487FC00F691AE /* circle.hpp */,
+				F34BE3CF2398CB9300A7750F /* plottingUtil.cpp */,
+				F34BE3D02398CB9300A7750F /* plottingUtil.hpp */,
 			);
 			path = guiUtil;
 			sourceTree = "<group>";
@@ -897,6 +902,7 @@
 				F37EAE3C238487FC00F691AE /* circle.cpp in Sources */,
 				F37EAE3F23848D2000F691AE /* board.cpp in Sources */,
 				F327545A2385F2BC00E47F2B /* player.cpp in Sources */,
+				F34BE3D12398CB9300A7750F /* plottingUtil.cpp in Sources */,
 				ECD5019E80DDF4A340227A5D /* ofxSmartFont.cpp in Sources */,
 				5E3E01007E77861B67C09A21 /* ofxDatGui.cpp in Sources */,
 				F3EAC6972384E57800BAE8B8 /* gameEngine.cpp in Sources */,
