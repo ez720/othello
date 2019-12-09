@@ -13,6 +13,8 @@ Board::Board() {}
 Board::Board(int board_length) {
     kBoardLength = board_length + 2;
     kBoardSize = kBoardLength * kBoardLength;
+    
+    //up, down, left, right, diagonals
     directions = {kBoardLength, -kBoardLength, -1, 1, kBoardLength + 1, kBoardLength - 1, -kBoardLength + 1, -kBoardLength - 1};
 }
 
@@ -23,16 +25,18 @@ const vector<char>& Board::GetBoard() const {
 void Board::SetInitialBoard() {
     board_state.clear();
     
+    //setting boundaries
     for (int i = 0; i < kBoardSize; i++) {
         board_state.push_back(kBound);
     }
     
-    //setting boundaries
+    //setting non-boundary tiles to empty
     for (int i = kBoardLength + 1; i < kBoardSize - kBoardLength; i++) {
         if ((1 <= (i % kBoardLength)) && ((i % kBoardLength) <= kBoardLength - 2))
             board_state[i] = kEmpty;
     }
     
+    //setting initial tiles
     int top_left = kBoardSize / 2 - kBoardLength / 2 - 1;
     int top_right = top_left + 1;
     int bottom_left = top_left + kBoardLength;
@@ -58,16 +62,16 @@ void Board::PrintBoard(std::ostream& out) {
 int Board::GetFlankIndex(int start_index, Player player, int direction) {
     int next_tile = start_index + direction;
     
-    //if next tile has player's mark or is out of bounds
+    //check if next tile has player's mark or is out of bounds
     if (board_state[next_tile] == player.GetMark() || board_state[next_tile] == kBound)
         return -1;
     
-    //while tiles in the direction are opponent tiles
+    //while tiles in the direction are opponent tiles, continue in the direction
     while (board_state[next_tile] == player.GetOpponentMark()) {
         next_tile += direction;
     }
     
-    //check if the ending tile has player's mark
+    //check if the ending tile has player's mark (valid flank)
     return (board_state[next_tile] == player.GetMark()) ? next_tile : -1;
 }
 
@@ -92,7 +96,7 @@ bool Board::IsValidMove(int start_index, Player player) {
     
     bool has_flank;
     
-    //check if there is a valid move in any direction
+    //check if there is a valid flank in any direction
     for (int direction : Board::directions) {
         if (GetFlankIndex(start_index, player, direction) != -1)
             return true;
@@ -104,6 +108,7 @@ bool Board::IsValidMove(int start_index, Player player) {
 void Board::MakeMove(int start_index, Player player) {
     board_state[start_index] = player.GetMark();
     
+    //flip tiles in all directions
     for (int direction : Board::directions) {
         FlipTiles(start_index, player, direction);
     }
@@ -112,6 +117,7 @@ void Board::MakeMove(int start_index, Player player) {
 vector<int> Board::GetValidMoves(Player player) {
     vector<int> valid_moves;
     
+    //go through all non-boundary tiles, check if the tile has a flank in any direction
     for (int i = kBoardLength + 1; i < kBoardSize - kBoardLength; i++) {
         if (IsValidMove(i, player))
             valid_moves.push_back(i);
@@ -128,10 +134,12 @@ int Board::Score(Player player) {
 }
 
 Player Board::NextPlayer(Player player) {
+    //if player's opponent has moves, return opponent
     if (!GetValidMoves(player.GetOpponent()).empty()) {
         return player.GetOpponent();
     }
     
+    //if opponent doesn't have moves but player does, return player
     else if(!GetValidMoves(player.GetOpponent()).empty()) {
         return player;
     }
