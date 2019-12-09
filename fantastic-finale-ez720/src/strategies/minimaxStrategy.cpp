@@ -8,7 +8,7 @@
 #include "minimaxStrategy.hpp"
 
 int MinimaxStrategy::GetMove(Player player, Board board) {
-    MinimaxSearch(player, board, 5);
+    MinimaxSearch(player, board, 3);
     return best_move;
 }
 
@@ -17,10 +17,11 @@ int MinimaxStrategy::MinimaxSearch(Player player, Board board, int depth) {
         return board.Score(minimax_player);
     
     vector<int> moves = board.GetValidMoves(player);
-    int best_score = -1;
+    int best_score;
     Player next = board.NextPlayer(player);
     
-    if (player.IsMax()) {
+    //player is max
+    if (player.GetMark() == minimax_player.GetMark()) {
         best_score = INT_MIN;
         
         for (int move : moves) {
@@ -30,14 +31,15 @@ int MinimaxStrategy::MinimaxSearch(Player player, Board board, int depth) {
             
             if (best_score < minimax_score) {
                 best_score = minimax_score;
-                
-                if (minimax_player.IsMax()) {
+            
+                if (depth == 3) {
                     best_move = move;
                 }
             }
         }
     }
     
+    //player is min
     else {
         best_score = INT_MAX;
         
@@ -48,10 +50,6 @@ int MinimaxStrategy::MinimaxSearch(Player player, Board board, int depth) {
             
             if (best_score > minimax_score) {
                 best_score = minimax_score;
-                
-                if (!minimax_player.IsMax()) {
-                    best_move = move;
-                }
             }
         }
     }

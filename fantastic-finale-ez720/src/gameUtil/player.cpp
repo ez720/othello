@@ -25,10 +25,6 @@ char Player::GetOpponentMark() {
     return opponent_mark;
 }
 
-bool Player::IsMax() {
-    return (mark == 'X');
-}
-
 bool Player::DoesNotExist() {
     return (mark == '?');
 }

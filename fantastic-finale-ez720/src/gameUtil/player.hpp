@@ -21,7 +21,6 @@ public:
     char GetMark();
     Player GetOpponent();
     char GetOpponentMark();
-    bool IsMax();
     bool DoesNotExist();
 };
 

@@ -6,6 +6,7 @@
 #include "gameEngine.hpp"
 #include "player.hpp"
 #include "plottingUtil.hpp"
+#include <unistd.h>
 
 class ofApp : public ofBaseApp{
 

@@ -55,8 +55,8 @@ void ofApp::update(){
         }
     }
 
-    
-    if (current_player.GetMark() == 'O') {
+    else if (current_player.GetMark() == 'O') {
+        usleep(800000);
         int move = minimax_white.GetMove(current_player, board);
         board.MakeMove(move, current_player);
         current_player = board.NextPlayer(current_player);
