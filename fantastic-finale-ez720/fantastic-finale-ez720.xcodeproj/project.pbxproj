@@ -14,6 +14,7 @@
 		ECD5019E80DDF4A340227A5D /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEA203049DDA07D5863248 /* ofxSmartFont.cpp */; };
 		F327545A2385F2BC00E47F2B /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F32754582385F2BC00E47F2B /* player.cpp */; };
 		F34BE3D12398CB9300A7750F /* plottingUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F34BE3CF2398CB9300A7750F /* plottingUtil.cpp */; };
+		F352736F239DF35800189CA9 /* moves-util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F352736E239DF35800189CA9 /* moves-util.cpp */; };
 		F37EAE3F23848D2000F691AE /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37EAE3D23848D2000F691AE /* board.cpp */; };
 		F3BF8F1523888F1D00B40EF0 /* tests-main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3A984DB23888D30000089F9 /* tests-main.cpp */; };
 		F3DC6DDA2388916F005DEC2D /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F37EAE3D23848D2000F691AE /* board.cpp */; };
@@ -255,6 +256,7 @@
 		F32754592385F2BC00E47F2B /* player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
 		F34BE3CF2398CB9300A7750F /* plottingUtil.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = plottingUtil.cpp; sourceTree = "<group>"; };
 		F34BE3D02398CB9300A7750F /* plottingUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = plottingUtil.hpp; sourceTree = "<group>"; };
+		F352736E239DF35800189CA9 /* moves-util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "moves-util.cpp"; path = "tests/moves-util.cpp"; sourceTree = "<group>"; };
 		F37EAE3D23848D2000F691AE /* board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = board.cpp; sourceTree = "<group>"; };
 		F37EAE3E23848D2000F691AE /* board.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = board.hpp; sourceTree = "<group>"; };
 		F3A984DB23888D30000089F9 /* tests-main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "tests-main.cpp"; path = "tests/tests-main.cpp"; sourceTree = "<group>"; };
@@ -698,6 +700,7 @@
 				F3FAA55223985FFE006C5184 /* catch.hpp */,
 				F3A984DD23888DC4000089F9 /* board-tests.cpp */,
 				F3A984DB23888D30000089F9 /* tests-main.cpp */,
+				F352736E239DF35800189CA9 /* moves-util.cpp */,
 			);
 			name = tests;
 			sourceTree = "<group>";
@@ -908,6 +911,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3E88A1A23986E350002A0D8 /* minimaxStrategy.cpp in Sources */,
+				F352736F239DF35800189CA9 /* moves-util.cpp in Sources */,
 				F3BF8F1523888F1D00B40EF0 /* tests-main.cpp in Sources */,
 				F3DC6DDC23889181005DEC2D /* player.cpp in Sources */,
 				F3FADD4A23985C86003245E8 /* board-tests.cpp in Sources */,
