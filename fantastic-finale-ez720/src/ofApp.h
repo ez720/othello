@@ -28,6 +28,7 @@ class ofApp : public ofBaseApp{
     
         bool clicked;
         bool reset;
+        bool human_player;
     
         int true_board_length = 8;
         int board_length = true_board_length + 2;
@@ -47,5 +48,6 @@ class ofApp : public ofBaseApp{
     
         vector<int> circles;
         MinimaxStrategy minimax_white;
+        MinimaxStrategy minimax_black;
 		
 };
