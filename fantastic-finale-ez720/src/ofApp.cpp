@@ -15,11 +15,16 @@ void ofApp::setup(){
     button->setTheme(new ofxDatGuiThemeAqua());
     button->onButtonEvent(this, &ofApp::onButtonEvent);
     
-    for (int i = 0; i < 100; i++) {
+    slider = gui->addSlider("Size", 6, 10, 8);
+    slider->onSliderEvent(this, &ofApp::onSliderEvent);
+    slider->setPrecision(0);
+    slider->setTheme(new ofxDatGuiThemeAqua());
+    
+    for (int i = 0; i < board_size; i++) {
         circles.push_back(-1);
     }
     
-    board = Board(8);
+    board = Board(true_board_length);
     board.SetInitialBoard();
     
     black = Player('X');
@@ -28,10 +33,22 @@ void ofApp::setup(){
     
     minimax_white = MinimaxStrategy();
     minimax_white.minimax_player = white;
+    
+    minimax_white = MinimaxStrategy();
+    minimax_white.minimax_player = white;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    if (reset) {
+        reset = false;
+        for (int i = 0; i < board_size; i++) {
+            circles[i] = -1;
+        }
+        board.SetInitialBoard();
+        current_player = black;
+    }
+    
     strategy_menu->update();
     
     if (current_player.GetMark() == 'X') {
@@ -65,7 +82,7 @@ void ofApp::update(){
     const vector<char> &board_vector = board.GetBoard();
     
     for (int i = 0; i < board_vector.size(); i++) {
-        std::pair<int, int> center = PlottingUtil::IndexToCenter(i);
+        std::pair<int, int> center = PlottingUtil::IndexToCenter(i, board_length, ofGetWidth());
         
         if (board_vector[i] == 'X') {
             circles[i] = 1;
@@ -79,18 +96,8 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    if (reset) {
-        reset = false;
-        for (int i = 0; i < 100; i++) {
-            circles[i] = -1;
-        }
-        board.SetInitialBoard();
-        current_player = black;
-        update();
-    }
-    
     for (int i = 0; i < circles.size(); i++) {
-        std::pair<int, int> center = PlottingUtil::IndexToCenter(i);
+        std::pair<int, int> center = PlottingUtil::IndexToCenter(i, board_length, ofGetWidth());
         
         if (circles[i] == 0) {
             ofSetColor(255, 255, 255);
@@ -106,15 +113,15 @@ void ofApp::draw(){
         }
         
         if (circles[i] != -1) {
-            ofDrawCircle(center.first, center.second, 35);
+            ofDrawCircle(center.first, center.second, 300 / board_length);
             ofSetColor(255, 255, 255);
             ofFill();
         }
     }
     
-    for (int i = 0; i < 1000; i+=100) {
-        ofDrawLine(0, i, 1000, i);
-        ofDrawLine(i, 0, i, 1000);
+    for (int i = 0; i < ofGetWidth(); i+=(ofGetWidth() / board_length)) {
+        ofDrawLine(0, i, ofGetWidth(), i);
+        ofDrawLine(i, 0, i, ofGetWidth());
     }
     
     strategy_menu->draw();
@@ -142,7 +149,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    int index = PlottingUtil::ClickToIndex(x, y);
+    int index = PlottingUtil::ClickToIndex(x, y, board_length, ofGetWidth());
     
     if (board.IsValidMove(index, black)) {
         circles[index] = 1;
@@ -192,5 +199,16 @@ void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e){
 
 void ofApp::onButtonEvent(ofxDatGuiButtonEvent e){
     reset = true;
-    
+}
+
+void ofApp::onSliderEvent(ofxDatGuiSliderEvent e){
+    if ((int)e.value % 2 == 0) {
+        board = Board(e.value);
+        
+        true_board_length = e.value;
+        board_length = true_board_length + 2;
+        board_size = board_length * board_length;
+        
+        reset = true;
+    }
 }

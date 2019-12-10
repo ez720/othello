@@ -2,8 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxDatGui.h"
-#include "board.hpp"
-#include "gameEngine.hpp"
+#include "minimaxStrategy.hpp"
 #include "player.hpp"
 #include "plottingUtil.hpp"
 #include <unistd.h>
@@ -27,8 +26,12 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        bool player_black = true;
+        bool clicked;
         bool reset;
+    
+        int true_board_length = 8;
+        int board_length = true_board_length + 2;
+        int board_size = board_length * board_length;
     
         Board board;
         Player black;
@@ -39,9 +42,10 @@ class ofApp : public ofBaseApp{
         void onDropdownEvent(ofxDatGuiDropdownEvent e);
         ofxDatGuiButton* button;
         void onButtonEvent(ofxDatGuiButtonEvent e);
+        ofxDatGuiSlider* slider;
+        void onSliderEvent(ofxDatGuiSliderEvent e);
     
         vector<int> circles;
         MinimaxStrategy minimax_white;
-        bool clicked;
 		
 };
