@@ -49,5 +49,6 @@ class ofApp : public ofBaseApp{
         vector<int> circles;
         MinimaxStrategy minimax_white;
         MinimaxStrategy minimax_black;
+        void UpdateMinimaxMove(MinimaxStrategy strategy);
 		
 };

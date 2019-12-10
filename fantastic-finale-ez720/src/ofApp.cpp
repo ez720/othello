@@ -11,14 +11,14 @@ void ofApp::setup(){
     strategy_menu->onDropdownEvent(this, &ofApp::onDropdownEvent);
     strategy_menu->setTheme(new ofxDatGuiThemeAqua());
     
-    button = gui->addButton("Reset");
-    button->setTheme(new ofxDatGuiThemeAqua());
-    button->onButtonEvent(this, &ofApp::onButtonEvent);
-    
     slider = gui->addSlider("Size", 6, 10, 8);
     slider->onSliderEvent(this, &ofApp::onSliderEvent);
     slider->setPrecision(0);
     slider->setTheme(new ofxDatGuiThemeAqua());
+    
+    button = gui->addButton("Reset");
+    button->setTheme(new ofxDatGuiThemeAqua());
+    button->onButtonEvent(this, &ofApp::onButtonEvent);
     
     for (int i = 0; i < board_size; i++) {
         circles.push_back(-1);
@@ -46,8 +46,10 @@ void ofApp::update(){
     if (reset) {
         reset = false;
         
+        circles.clear();
+        
         for (int i = 0; i < board_size; i++) {
-            circles[i] = -1;
+            circles.push_back(-1);
         }
         
         board.SetInitialBoard();
@@ -65,7 +67,7 @@ void ofApp::update(){
                 
                 //clear possible moves on board
                 for (int i = 0 ; i < circles.size(); i++) {
-                    if (circles[i] == 2) {
+                    if (circles[i] == 100) {
                         circles[i] = -1;
                     }
                 }
@@ -75,25 +77,19 @@ void ofApp::update(){
                 //display possible moves
                 vector<int> moves = board.GetValidMoves(current_player);
                 for (int move : moves) {
-                    circles[move] = 2;
+                    circles[move] = 100;
                 }
             }
         }
         
         else {
-            usleep(800000);
-            int move = minimax_black.GetMove(current_player, board);
-            board.MakeMove(move, current_player);
-            current_player = board.NextPlayer(current_player);
+            UpdateMinimaxMove(minimax_black);
         }
 
     }
 
     else if (current_player.GetMark() == 'O') {
-        usleep(800000);
-        int move = minimax_white.GetMove(current_player, board);
-        board.MakeMove(move, current_player);
-        current_player = board.NextPlayer(current_player);
+        UpdateMinimaxMove(minimax_white);
     }
     
     const vector<char> &board_vector = board.GetBoard();
@@ -101,41 +97,56 @@ void ofApp::update(){
     //update circles vector for drawing
     for (int i = 0; i < board_vector.size(); i++) {
         if (board_vector[i] == 'X') {
-            circles[i] = 1;
-        }
-        
-        if (board_vector[i] == 'O') {
             circles[i] = 0;
         }
+        
+        else if (board_vector[i] == 'O') {
+            circles[i] = 255;
+        }
+        
+        else if (board_vector[i] == '-') {
+            circles[i] = 150;
+        }
     }
+}
+
+//--------------------------------------------------------------
+void ofApp::UpdateMinimaxMove(MinimaxStrategy strategy) {
+    usleep(800000);
+    int move = strategy.GetMove(current_player, board);
+    board.MakeMove(move, current_player);
+    current_player = board.NextPlayer(current_player);
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     for (int i = 0; i < circles.size(); i++) {
         std::pair<int, int> center = PlottingUtil::IndexToCenter(i, board_length, ofGetWidth());
+        int color = circles[i];
         
-        //set color to white
-        if (circles[i] == 0) {
-            ofSetColor(255, 255, 255);
-        }
-        
-        //set color to black
-        else if (circles[i] == 1) {
-            ofSetColor(0, 0, 0);
-        }
-        
-        //possible move
-        else if (circles[i] == 2) {
-            ofNoFill();
-            ofSetColor(255, 0, 0);
-        }
-        
-        //draw circles
-        if (circles[i] != -1) {
+        //drawing circles
+        if (color != -1 && color != 150) {
+            //drawing possible moves
+            if (color == 100) {
+                ofNoFill();
+                ofSetColor(color, 0, 0);
+            }
+            
+            else {
+                ofSetColor(color, color, color);
+            }
+            
             ofDrawCircle(center.first, center.second, 300 / board_length);
             ofSetColor(255, 255, 255);
             ofFill();
+        }
+        
+        //filling in boundaries
+        else if (color == 150) {
+            int scale = ofGetWidth() / board_length;
+            ofSetColor(color, color, color);
+            ofDrawRectangle(center.first - scale / 2, center.second - scale / 2, scale, scale);
+            ofSetColor(255, 255, 255);
         }
     }
     
