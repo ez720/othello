@@ -13,6 +13,9 @@
   * Created methods to return a list of valid moves and flip tiles
   * Created multiple helper methods (getting indexes of "flanking" tiles, checking valid moves, etc.)
 
+## Week 2 (Thanksgiving)
+ * Researched minimax and openframeworks
+
 ## Week 3
 
 ### 12/2 - 12/3
@@ -25,4 +28,15 @@
 ## Week 4
 
 ### 12/5
-* 
+* Integration with openframeworks
+  * Added gameplay for GUI
+  * Added human vs minimax gameplay
+
+### 12/8
+* Fixed minimax bug
+  * Minimax method was choosing black as maximizing player, fixed it so method would choose the "original" player as the maximizing player
+  
+### 12/10-11
+* Improved extendability
+  * Can play on any size board
+* Added option for player to be human or minimax
