@@ -17,7 +17,12 @@ public:
     Player minimax_player;
     MinimaxStrategy() = default;
     int best_move;
+    
+    /*
+     Gets best move returned by minimax search with depth of 3
+     */
     int GetMove(Player player, Board board);
+    
     int MinimaxSearch(Player player, Board board, int depth);
 };
 

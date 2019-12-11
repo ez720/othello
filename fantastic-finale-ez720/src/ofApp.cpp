@@ -2,23 +2,27 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    //initialize menu panel
     ofxDatGui* gui = new ofxDatGui(ofxDatGuiAnchor::BOTTOM_LEFT);
     gui->addHeader(":: MENU ::");
     gui->getHeader()->setTheme(new ofxDatGuiThemeWireframe());
     
+    //dropdown menu to pick player
     vector<string> strategy_options = {"Human", "Minimax"};
     strategy_menu = gui->addDropdown("Select player", strategy_options);
     strategy_menu->onDropdownEvent(this, &ofApp::onDropdownEvent);
     strategy_menu->setTheme(new ofxDatGuiThemeAqua());
     
+    //slider to pick board size
     slider = gui->addSlider("Size", 6, 10, 8);
     slider->onSliderEvent(this, &ofApp::onSliderEvent);
     slider->setPrecision(0);
     slider->setTheme(new ofxDatGuiThemeAqua());
     
-    button = gui->addButton("Reset");
-    button->setTheme(new ofxDatGuiThemeAqua());
-    button->onButtonEvent(this, &ofApp::onButtonEvent);
+    //reset button
+    reset_button = gui->addButton("Reset");
+    reset_button->setTheme(new ofxDatGuiThemeAqua());
+    reset_button->onButtonEvent(this, &ofApp::onButtonEvent);
     
     for (int i = 0; i < board_size; i++) {
         circles.push_back(-1);
@@ -42,7 +46,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    //clear board and set it to initial state
+    //clear board and set it to initial state, start new game
     if (reset) {
         reset = false;
         
@@ -65,7 +69,7 @@ void ofApp::update(){
                 clicked = false;
                 current_player = board.NextPlayer(current_player);
                 
-                //clear possible moves on board
+                //clear possible moves displayed on GUI
                 for (int i = 0 ; i < circles.size(); i++) {
                     if (circles[i] == 100) {
                         circles[i] = -1;
@@ -82,6 +86,7 @@ void ofApp::update(){
             }
         }
         
+        //if selected player (from dropdown) is minimax
         else {
             UpdateMinimaxMove(minimax_black);
         }
@@ -183,8 +188,8 @@ void ofApp::mouseDragged(int x, int y, int button){
 void ofApp::mousePressed(int x, int y, int button){
     int index = PlottingUtil::ClickToIndex(x, y, board_length, ofGetWidth());
     
+    //if is player's turn and they clicked a valid tile, update board with their move
     if (board.IsValidMove(index, black) && human_player) {
-        circles[index] = 1;
         board.MakeMove(index, Player('X'));
         clicked = true;
     }

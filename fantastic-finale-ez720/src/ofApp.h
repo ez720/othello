@@ -39,16 +39,43 @@ class ofApp : public ofBaseApp{
         Player white;
         Player current_player;
     
+        /*
+         Dropdown menu to select player
+         */
         ofxDatGuiDropdown* strategy_menu;
+    
+        /*
+         Creates new game where the selected player (human or minimax) plays against minimax
+         */
         void onDropdownEvent(ofxDatGuiDropdownEvent e);
-        ofxDatGuiButton* button;
+    
+        /*
+         Reset button
+         */
+        ofxDatGuiButton* reset_button;
+    
+        /*
+         Clears board and starts new game
+         */
         void onButtonEvent(ofxDatGuiButtonEvent e);
+    
+        /*
+         Slider to pick board size
+         */
         ofxDatGuiSlider* slider;
+    
+        /*
+         Creates new board and updates GUI according to chosen size
+         */
         void onSliderEvent(ofxDatGuiSliderEvent e);
     
         vector<int> circles;
         MinimaxStrategy minimax_white;
         MinimaxStrategy minimax_black;
+    
+        /*
+         Gets move from minimax according to current board and updates board
+         */
         void UpdateMinimaxMove(MinimaxStrategy strategy);
 		
 };
